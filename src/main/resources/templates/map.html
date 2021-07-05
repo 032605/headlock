@@ -17,7 +17,17 @@ html, body {width:100%;height:100%;margin:0;padding:0;}
 .custom_zoomcontrol {position:absolute;top:50px;right:10px;width:36px;height:80px;overflow:hidden;z-index:1;background-color:#f5f5f5;} 
 .custom_zoomcontrol span {display:block;width:36px;height:40px;text-align:center;cursor:pointer;}     
 .custom_zoomcontrol span img {width:15px;height:15px;padding:12px 0;border:none;}             
-.custom_zoomcontrol span:first-child{border-bottom:1px solid #bfbfbf;}            
+.custom_zoomcontrol span:first-child{border-bottom:1px solid #bfbfbf;}       
+
+   
+.dotOverlay {position:relative;bottom:10px;border-radius:6px;border: 1px solid #ccc;border-bottom:2px solid #ddd;float:left;font-size:12px;padding:5px;background:#fff; margin-bottom:40px;}
+.dotOverlay:nth-of-type(n) {border:0; box-shadow:0px 1px 2px #888;}    
+.number {font-weight:bold;color:#FF297B;}
+.dotOverlay:after {content:'';position:absolute;margin-left:-6px;left:50%;bottom:-8px;width:11px;height:8px;background:url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white_small.png')}
+.distanceInfo {position:relative;top:5px;left:5px;list-style:none;margin:0;}
+.distanceInfo .label {display:inline-block;width:50px;}
+.distanceInfo:after {content:none;}
+   
 </style>  
 </head>
 <body>
@@ -35,7 +45,11 @@ html, body {width:100%;height:100%;margin:0;padding:0;}
     </div>
 </div>
 
-<div class="">
+<div class="map_info">
+
+평균 주행 거리 : 
+평균 이용 시간 :
+평균 이용 시간대 : 
 
 </div>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=88c8c934121dacce3c8fb18c54975b74"></script>
@@ -152,7 +166,7 @@ var linePath = [
     new kakao.maps.LatLng(35.876092, 128.729718)
 ];
 
-
+// 마커생성 **************************
 var StratMakerSrc = '../img/start.png', // 마커이미지의 주소입니다
 	imageSize = new kakao.maps.Size(50, 50), // 마커이미지의 크기입니다
 	imageOption = {offset: new kakao.maps.Point(27, 40)}; //마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
@@ -183,20 +197,40 @@ var FinishMarkerImg = new kakao.maps.MarkerImage(FinishMarkerSrc, imageSize, ima
    StratMaker.setMap(map);  
    FinishMarker.setMap(map); 
     
-    
+// 마커생성 **************************
+
+
 // 지도에 표시할 선을 생성합니다
 var polyline = new kakao.maps.Polyline({
     path: linePath, // 선을 구성하는 좌표배열 입니다
     strokeWeight: 5, // 선의 두께 입니다
     strokeColor: '#FF297B', // 선의 색깔입니다
-    strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+    strokeOpacity: 0.8, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
     strokeStyle: 'solid' // 선의 스타일입니다
 });
 
 // 지도에 선을 표시합니다 
 polyline.setMap(map);  
 
+var distance = Math.round(polyline.getLength());
+displayCircleDot(linePath, distance);
 
+function displayCircleDot(linePath, distance) {
+
+    if (distance > 0) {
+        // 클릭한 지점까지의 그려진 선의 총 거리를 표시할 커스텀 오버레이를 생성합니다
+        var distanceOverlay = new kakao.maps.CustomOverlay({
+            content: '<div class="dotOverlay">주행 거리 <span class="number">' + distance + '</span>m</div>',
+            position: FinishMarkerPosition,
+            yAnchor: 1,
+            zIndex: 2
+        });
+
+        // 지도에 표시합니다
+        distanceOverlay.setMap(map);
+    }
+
+}
 
 
 </script>

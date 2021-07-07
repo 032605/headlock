@@ -1,17 +1,17 @@
 package com.headlock.headlock.dto;
 
-public class UserProfile {
+public class Member {
 	private String id;
 	private String name;
-	private String phone;
+	private int age;
 	private String address;
 	
 	
-	public UserProfile(String id, String name, String phone, String address) {
+	public Member(String id, String name, int age, String address) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.phone = phone;
+		this.age = age;
 		this.address = address;
 	}
 	public String getId() {
@@ -26,11 +26,11 @@ public class UserProfile {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getPhone() {
-		return phone;
+	public int getage() {
+		return age;
 	}
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public void setage(int age) {
+		this.age = age;
 	}
 	public String getAddress() {
 		return address;

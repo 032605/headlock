@@ -26,7 +26,6 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	annotationProcessor 'org.projectlombok:lombok'
 
 	// 시큐리티, 타임리프
 	//implementation 'org.springframework.boot:spring-boot-starter-security'

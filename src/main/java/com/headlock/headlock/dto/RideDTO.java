@@ -6,7 +6,6 @@ import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-
 public class RideDTO {
 	private int rideId;
 	private String rideUser;

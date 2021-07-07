@@ -96,7 +96,7 @@ function zoomOut() {
 /* *************** 기본 세팅 끝 ******************   */
 
 /* *************** geolocation으로 현재 위치 받아오기  ******************   */
-
+/*
 // HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
 if (navigator.geolocation) {
     
@@ -155,28 +155,27 @@ function displayMarker(locPosition, message) {
     // 지도 중심좌표를 접속위치로 변경합니다
     map.setCenter(locPosition);      
 }    
-
+*/
 /* *************** geolocation으로 현재 위치 받아오기  끝 ******************   */ 
 
 
 /* *************** polyline  ******************   */
-
-
-	    
 // 선을 구성하는 좌표 배열입니다. 이 좌표들을 이어서 선을 표시합니다
-
 var linePath = [];
 var rideLatList = new Array();
 var rideLonList = new Array();
 
+// 위경도 배열 데이터 추가
 <c:forEach items="${ride}" var="item">
 rideLatList.push("${item.rideLat}");
 rideLonList.push("${item.rideLon}");
 </c:forEach>
 
+// 확인
 console.log(rideLatList);
 console.log(rideLonList);
 
+// 2차원 배열로 푸시 
 for (var i = 0; i < rideLatList.length; i++) {
 	linePath.push(new kakao.maps.LatLng(rideLatList[i], rideLonList[i]))
 

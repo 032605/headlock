@@ -16,6 +16,16 @@ public class RideDTO {
 	private Date rideDatetime;
 	
 	
+	public RideDTO(int rideId, String rideUser, BigDecimal rideLat, BigDecimal rideLon, Date rideDatetime) {
+		super();
+		this.rideId = rideId;
+		this.rideUser = rideUser;
+		this.rideLat = rideLat;
+		this.rideLon = rideLon;
+		this.rideDatetime = rideDatetime;
+	}
+
+
 	public int getRideId() {
 		return rideId;
 	}

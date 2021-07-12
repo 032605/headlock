@@ -27,4 +27,5 @@ public interface MemberMapper {
 
 	@Delete("DELETE FROM member WHERE id=#{id}")
 	int deleteUserProfile(@Param("id") String id);
+
 }

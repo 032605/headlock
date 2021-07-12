@@ -24,29 +24,29 @@ public class MemberController {
 		this.mapper = mapper;
 	}
 		
-	@GetMapping("/select/{id}")
+	@GetMapping("/{id}")
 	public Member getUserProfile(@PathVariable("id") String id) {
 		return mapper.getUserProfile(id);
 	}
 	
-	@GetMapping("/select")
+	@GetMapping("/all")
 	public List<Member> getUserProfileList() {
 		return mapper.getUserProfileList();
 	}
 	
-	@PutMapping("/insert/{id}")
-	public void putUserProfile(@PathVariable("id") String id, @RequestParam("name") String name, @RequestParam("age") int age, @RequestParam("address") String address) {
+	@PutMapping("/insert")
+	public void putUserProfile(@RequestParam("id") String id, @RequestParam("name") String name, @RequestParam("age") int age, @RequestParam("address") String address) {
 		mapper.insertUserProfile(id, name, age, address);
 	}
 	
-	@PostMapping("/update/{id}")
+	@PostMapping("/{id}")
 	public void postUserProfile(@PathVariable("id") String id, @RequestParam("name") String name, @RequestParam("age") int age, @RequestParam("address") String address) {
 		mapper.updateUserProfile(id, name, age, address);
 	}
 	
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("/{id}")
 	public void deleteUserProfile(@PathVariable("id") String id) {
 		mapper.deleteUserProfile(id);
 	}
-		
+
 }

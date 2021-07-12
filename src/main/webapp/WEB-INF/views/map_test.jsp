@@ -56,7 +56,7 @@ html, body {width:100%;height:100%;margin:0;padding:0;}
 평균 이용 시간대 : 
 
 </div>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=88c8c934121dacce3c8fb18c54975b74"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey="></script>
 <script>
 console.log ("${ride[0].rideLat }");
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
